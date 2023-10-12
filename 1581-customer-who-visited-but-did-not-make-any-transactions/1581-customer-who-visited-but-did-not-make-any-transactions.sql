@@ -9,3 +9,11 @@ SELECT customer_id, COUNT(customer_id) AS count_no_trans
 FROM cte
 WHERE transaction_id IS NULL
 GROUP BY customer_id;
+
+/*
+another way to do this would be:
+SELECT customer_id, COUNT(*) AS count_no_trans
+FROM Visits
+WHERE visit_id NOT IN (SELECT visit_id FROM Transactions)
+GROUP BY customer_id;
+*/
